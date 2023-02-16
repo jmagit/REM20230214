@@ -1,0 +1,16 @@
+:host {
+  display: block;
+  --positive-back-color :azure;
+  --negativo-back-color:  pink;
+
+  /* background-color: var(--positive-color); */
+}
+.center {
+  text-align: center;
+}
+.positivo {
+  background-color: var(--positive-back-color);
+}
+.negativo {
+  background-color: var(--negativo-back-color);
+}
