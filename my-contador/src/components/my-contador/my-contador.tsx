@@ -34,7 +34,7 @@ export class MyContador {
   }
 
   constructor() {
-    // this.sube = this.sube.bind(this)
+    this.sube = this.sube.bind(this)
   }
 
   componentWillLoad() {
@@ -93,6 +93,7 @@ export class MyContador {
   render() {
     console.log(`Refresco: ${++this.refresh}`)
     return (
+      // <Host >
       <Host class={{ 'positivo': this.counter >= 0, 'negativo': this.counter < 0, 'center': true }} >
         <div class={{ 'positivo': this.counter >= 0, 'negativo': this.counter < 0, 'center': true }}>
           <MyPantalla display={this.counter} />
