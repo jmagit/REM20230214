@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pruebas del componente</title>
+
+    <script type="module" src="/build/my-contador.esm.js"></script>
+    <script nomodule src="/build/my-contador.js"></script>
+    <style>
+      /*
+      my-contador::part(pantalla) {
+        font-size: 2em;
+      }
+      .center {
+        max-width: 100px;
+      }
+      */
+      button {
+        /* font-size: 2em; */
+        color: white;
+        background-color: red;
+      }
+
+    </style>
+  </head>
+  <body>
+    <my-contador delta="3" init="10" ><i>contenido de la etiqueta</i></my-contador>
+
+    <fieldset>
+      <legend>Externo</legend>
+      <label for="txtInit">Init:</label>
+      <input type="number" id="txtInit" value="1" >
+      <label for="txtDelta">Delta:</label>
+      <input type="number" id="txtDelta" value="1" >
+      <button type="button">Reset</button>
+    </fieldset>
+
+    <script>
+      (() => {
+        let contador = document.querySelector('my-contador');
+        document.querySelector('#txtInit').addEventListener('change', event => contador.init = event.target.value );
+        document.querySelector('#txtDelta').addEventListener('change', event => contador.delta = event.target.value );
+        document.querySelector('button').addEventListener('click', () => contador.reset());
+        contador.addEventListener('updated', event => console.log(event.detail))
+      })();
+    </script>
+    </body>
+</html>
