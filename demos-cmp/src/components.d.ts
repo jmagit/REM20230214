@@ -6,6 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    /**
+     * Ejemplo de componente en Stencil
+     */
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +25,9 @@ export namespace Components {
     }
 }
 declare global {
+    /**
+     * Ejemplo de componente en Stencil
+     */
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -33,6 +39,9 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    /**
+     * Ejemplo de componente en Stencil
+     */
     interface MyComponent {
         /**
           * The first name
@@ -55,6 +64,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            /**
+             * Ejemplo de componente en Stencil
+             */
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
