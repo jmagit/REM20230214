@@ -6,6 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface MyCard {
+        /**
+          * cccc
+         */
+        "cardTitle": string;
+    }
     /**
      * Ejemplo de componente en Stencil
      */
@@ -23,8 +29,30 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface MyDemo {
+        /**
+          * Valor a incrementar/decrementar del contador
+         */
+        "delta": number;
+        /**
+          * Valor inicial del contador
+         */
+        "initValue": number;
+        /**
+          * Ejemplo de opcional
+         */
+        "nombre"?: string;
+        "objeto": any;
+        "visible": boolean;
+    }
 }
 declare global {
+    interface HTMLMyCardElement extends Components.MyCard, HTMLStencilElement {
+    }
+    var HTMLMyCardElement: {
+        prototype: HTMLMyCardElement;
+        new (): HTMLMyCardElement;
+    };
     /**
      * Ejemplo de componente en Stencil
      */
@@ -34,11 +62,25 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyDemoElement extends Components.MyDemo, HTMLStencilElement {
+    }
+    var HTMLMyDemoElement: {
+        prototype: HTMLMyDemoElement;
+        new (): HTMLMyDemoElement;
+    };
     interface HTMLElementTagNameMap {
+        "my-card": HTMLMyCardElement;
         "my-component": HTMLMyComponentElement;
+        "my-demo": HTMLMyDemoElement;
     }
 }
 declare namespace LocalJSX {
+    interface MyCard {
+        /**
+          * cccc
+         */
+        "cardTitle"?: string;
+    }
     /**
      * Ejemplo de componente en Stencil
      */
@@ -56,18 +98,38 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface MyDemo {
+        /**
+          * Valor a incrementar/decrementar del contador
+         */
+        "delta"?: number;
+        /**
+          * Valor inicial del contador
+         */
+        "initValue"?: number;
+        /**
+          * Ejemplo de opcional
+         */
+        "nombre"?: string;
+        "objeto"?: any;
+        "visible"?: boolean;
+    }
     interface IntrinsicElements {
+        "my-card": MyCard;
         "my-component": MyComponent;
+        "my-demo": MyDemo;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "my-card": LocalJSX.MyCard & JSXBase.HTMLAttributes<HTMLMyCardElement>;
             /**
              * Ejemplo de componente en Stencil
              */
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-demo": LocalJSX.MyDemo & JSXBase.HTMLAttributes<HTMLMyDemoElement>;
         }
     }
 }

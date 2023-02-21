@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-    <title>Stencil Component Starter</title>
 
-    <script type="module" src="/build/demos-cmp.esm.js"></script>
-    <script nomodule src="/build/demos-cmp.js"></script>
-  </head>
-  <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/demos-cmp.esm.js"></script>
+  <script nomodule src="/build/demos-cmp.js"></script>
+  <style>
+    p {
+      font-size: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="date" >
+  <my-card card-title="Esto es una demo">
+    <p slot="summary">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+    <p>Beatae est nemo id accusamus autem voluptatum dolor velit expedita voluptatem quas molestiae, deserunt architecto
+      libero, repellendus suscipit, delectus voluptate incidunt. Incidunt.
+    </p>
+  </my-card>
+  <my-demo visible />
+  <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+</body>
+
 </html>
