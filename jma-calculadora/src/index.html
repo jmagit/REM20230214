@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pruebas de la calculadora</title>
+
+  <script type="module" src="/build/jma-calculadora.esm.js"></script>
+  <script nomodule src="/build/jma-calculadora.js"></script>
+</head>
+<style>
+  /* jma-calculadora {
+    --calculadora-background-color: #9afa6a;
+  } */
+</style>
+
+<body>
+  <div>
+    Pantalla:
+    <output id="pantalla"></output>
+    <button type="button" id="btnInit">Init</button>
+  </div>
+  <jma-calculadora id="calc1" value="kk" coma-decimal></jma-calculadora>
+  <script>
+    (async () => {
+      await customElements.whenDefined('jma-calculadora');
+      const calc = document.querySelector('#calc1');
+      calc.addEventListener('updated', event => {
+        document.querySelector('#pantalla').textContent = event.detail
+      })
+      document.querySelector('#btnInit').addEventListener('click', async event => {
+        await calc.inicia();
+        calc.value = 5
+        console.log(calc.value)
+      })
+    })()
+  </script>
+  <style>
+    .jma-input-calc {
+      --calc-font-size: 1em;
+    }
+
+    .jma-input-calc input[type=number] {
+      float: left;
+      background: #f1f1f1;
+      width: 75%;
+      padding: 5px;
+      font-size: var(--calc-font-size);
+      border: 1px solid grey;
+    }
+
+    .jma-input-calc button {
+      float: left;
+      background: #2196F3;
+      width: 20%;
+      padding: 4px 5px;
+      font-size: var(--calc-font-size);
+      border: 1px solid grey;
+      border-left: none;
+      cursor: pointer;
+    }
+
+    .jma-input-calc button:hover {
+      background: #0b7dda;
+    }
+
+    .jma-input-calc button svg {
+      width: var(--calc-font-size);
+      height: var(--calc-font-size);
+    }
+
+    .jma-input-calc::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+  </style>
+
+  <div class="theme-dark" style="max-width: 250px; background-color: antiquewhite;">
+    <label for="txtImporte">Importe: </label>
+    <div class="jma-input-calc">
+      <input type="number" id="txtImporte" value="0"">
+      <button type=" button" id="btnCalc" title="Calcular">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+        <path
+          d="M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H64zM96 64H288c17.7 0 32 14.3 32 32v32c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V96c0-17.7 14.3-32 32-32zM64 224c0-17.7 14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32s-32-14.3-32-32zm32 64c17.7 0 32 14.3 32 32s-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32zM64 416c0-17.7 14.3-32 32-32h96c17.7 0 32 14.3 32 32s-14.3 32-32 32H96c-17.7 0-32-14.3-32-32zM192 192c17.7 0 32 14.3 32 32s-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32zM160 320c0-17.7 14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32s-32-14.3-32-32zM288 192c17.7 0 32 14.3 32 32s-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32zM256 320c0-17.7 14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32s-32-14.3-32-32zm32 64c17.7 0 32 14.3 32 32s-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32z" />
+      </svg>
+      </button>
+      <jma-calculadora id="calc2" hidden></jma-calculadora>
+    </div>
+  </div>
+  <script>
+      (async () => {
+        await customElements.whenDefined('jma-calculadora');
+        const calc = document.querySelector('#calc2');
+        calc.addEventListener('equaled', event => {
+          document.querySelector('#txtImporte').value = event.detail
+          calc.hidden = true;
+        })
+        document.querySelector('#btnCalc').addEventListener('click', async event => {
+          if (calc.hidden) {
+            await calc.inicia(+document.querySelector('#txtImporte').value);
+          }
+          calc.hidden = !calc.hidden;
+        })
+      })()
+  </script>
+</body>
+
+</html>

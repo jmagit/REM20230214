@@ -35,11 +35,12 @@
     </fieldset>
 
     <script>
-      (() => {
+      (async () => {
+        await customElements.whenDefined('my-contador');
         let contador = document.querySelector('my-contador');
         document.querySelector('#txtInit').addEventListener('change', event => contador.init = event.target.value );
         document.querySelector('#txtDelta').addEventListener('change', event => contador.delta = event.target.value );
-        document.querySelector('button').addEventListener('click', () => contador.reset());
+        document.querySelector('button').addEventListener('click', async () => await contador.reset());
         contador.addEventListener('updated', event => console.log(`Página: ${event.detail}`))
       })();
     </script>
