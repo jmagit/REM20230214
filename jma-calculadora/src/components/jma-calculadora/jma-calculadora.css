@@ -1,0 +1,471 @@
+:host {
+  --calculadora-background-color: #6ab4fa;
+  --pantalla-background-color: #004000;
+  --pantalla-color: #ffff00;
+  --digito-color: #000080;
+  --operador-color: #ff0000;
+  --dark-calculadora-background-color: #000000;
+  --dark-pantalla-background-color: #e4fbe4;
+  --dark-pantalla-color: #4a4a00;
+  --dark-digito-color: #000080;
+  --dark-operador-color: #ff0000;
+}
+
+.Calculadora {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: var(--calculadora-background-color);
+  border-style: outset;
+  padding: 6px;
+  margin: 4px;
+  max-width: 100%;
+  min-width: 150px;
+  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+@media (min-width: 768px) {
+  .Calculadora {
+    max-width: 500px;
+  }
+}
+@media (min-width: 992px) {
+  .Calculadora {
+    max-width: 700px;
+  }
+}
+@media (min-width: 1200px) {
+  .Calculadora {
+    max-width: 900px;
+  }
+}
+.Calculadora .Pantalla {
+  grid-column: 1/span 4;
+  background-color: var(--pantalla-background-color);
+  color: var(--pantalla-color);
+  border-style: inset;
+  text-align: right;
+  padding: 4px;
+}
+@media (min-width: 576px) {
+  .Calculadora .Pantalla {
+    font-size: 1.5em !important;
+  }
+}
+@media (min-width: 768px) {
+  .Calculadora .Pantalla {
+    font-size: 2em !important;
+  }
+}
+@media (min-width: 992px) {
+  .Calculadora .Pantalla {
+    font-size: 2.5em !important;
+  }
+}
+@media (min-width: 1200px) {
+  .Calculadora .Pantalla {
+    font-size: 3em !important;
+  }
+}
+.Calculadora .Resumen {
+  grid-column: 1/span 4;
+  text-align: right;
+}
+@media (min-width: 576px) {
+  .Calculadora .Resumen {
+    font-size: 1.3em !important;
+  }
+}
+@media (min-width: 768px) {
+  .Calculadora .Resumen {
+    font-size: 1.6em !important;
+  }
+}
+@media (min-width: 992px) {
+  .Calculadora .Resumen {
+    font-size: 1.9em !important;
+  }
+}
+@media (min-width: 1200px) {
+  .Calculadora .Resumen {
+    font-size: 2.2em !important;
+  }
+}
+.Calculadora .btnDigito {
+  color: var(--digito-color);
+  width: 100%;
+  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+@media (min-width: 576px) {
+  .Calculadora .btnDigito {
+    font-size: 1.3em !important;
+  }
+}
+@media (min-width: 768px) {
+  .Calculadora .btnDigito {
+    font-size: 1.6em !important;
+  }
+}
+@media (min-width: 992px) {
+  .Calculadora .btnDigito {
+    font-size: 1.9em !important;
+  }
+}
+@media (min-width: 1200px) {
+  .Calculadora .btnDigito {
+    font-size: 2.2em !important;
+  }
+}
+.Calculadora .btnOperar {
+  color: var(--operador-color);
+  width: 100%;
+  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+@media (min-width: 576px) {
+  .Calculadora .btnOperar {
+    font-size: 1.3em !important;
+  }
+}
+@media (min-width: 768px) {
+  .Calculadora .btnOperar {
+    font-size: 1.6em !important;
+  }
+}
+@media (min-width: 992px) {
+  .Calculadora .btnOperar {
+    font-size: 1.9em !important;
+  }
+}
+@media (min-width: 1200px) {
+  .Calculadora .btnOperar {
+    font-size: 2.2em !important;
+  }
+}
+
+:host-context(.theme-dark) .Calculadora {
+  background-color: var(--dark-calculadora-background-color);
+  color: white;
+}
+:host-context(.theme-dark) .Calculadora .Pantalla {
+  background-color: var(--pantalla-color);
+  color: var(--pantalla-background-color);
+}
+:host-context(.theme-dark) .Calculadora .btnDigito {
+  color: var(--dark-digito-color);
+}
+:host-context(.theme-dark) .Calculadora .btnOperar {
+  color: var(--dark-operador-color);
+}
+
+.col-1 {
+  grid-column: 1;
+}
+
+.col-1x2 {
+  grid-column: 1 / span 2;
+}
+
+.col-1x3 {
+  grid-column: 1 / span 3;
+}
+
+.col-1x4 {
+  grid-column: 1 / span 4;
+}
+
+.col-1x5 {
+  grid-column: 1 / span 5;
+}
+
+.col-1x6 {
+  grid-column: 1 / span 6;
+}
+
+.col-1x7 {
+  grid-column: 1 / span 7;
+}
+
+.col-1x8 {
+  grid-column: 1 / span 8;
+}
+
+.col-1x9 {
+  grid-column: 1 / span 9;
+}
+
+.col-1x10 {
+  grid-column: 1 / span 10;
+}
+
+.col-1x11 {
+  grid-column: 1 / span 11;
+}
+
+.col-1x12 {
+  grid-column: 1 / span 12;
+}
+
+.col-2 {
+  grid-column: 2;
+}
+
+.col-2x2 {
+  grid-column: 2 / span 2;
+}
+
+.col-2x3 {
+  grid-column: 2 / span 3;
+}
+
+.col-2x4 {
+  grid-column: 2 / span 4;
+}
+
+.col-2x5 {
+  grid-column: 2 / span 5;
+}
+
+.col-2x6 {
+  grid-column: 2 / span 6;
+}
+
+.col-2x7 {
+  grid-column: 2 / span 7;
+}
+
+.col-2x8 {
+  grid-column: 2 / span 8;
+}
+
+.col-2x9 {
+  grid-column: 2 / span 9;
+}
+
+.col-2x10 {
+  grid-column: 2 / span 10;
+}
+
+.col-2x11 {
+  grid-column: 2 / span 11;
+}
+
+.col-3 {
+  grid-column: 3;
+}
+
+.col-3x2 {
+  grid-column: 3 / span 2;
+}
+
+.col-3x3 {
+  grid-column: 3 / span 3;
+}
+
+.col-3x4 {
+  grid-column: 3 / span 4;
+}
+
+.col-3x5 {
+  grid-column: 3 / span 5;
+}
+
+.col-3x6 {
+  grid-column: 3 / span 6;
+}
+
+.col-3x7 {
+  grid-column: 3 / span 7;
+}
+
+.col-3x8 {
+  grid-column: 3 / span 8;
+}
+
+.col-3x9 {
+  grid-column: 3 / span 9;
+}
+
+.col-3x10 {
+  grid-column: 3 / span 10;
+}
+
+.col-4 {
+  grid-column: 4;
+}
+
+.col-4x2 {
+  grid-column: 4 / span 2;
+}
+
+.col-4x3 {
+  grid-column: 4 / span 3;
+}
+
+.col-4x4 {
+  grid-column: 4 / span 4;
+}
+
+.col-4x5 {
+  grid-column: 4 / span 5;
+}
+
+.col-4x6 {
+  grid-column: 4 / span 6;
+}
+
+.col-4x7 {
+  grid-column: 4 / span 7;
+}
+
+.col-4x8 {
+  grid-column: 4 / span 8;
+}
+
+.col-4x9 {
+  grid-column: 4 / span 9;
+}
+
+.col-5 {
+  grid-column: 5;
+}
+
+.col-5x2 {
+  grid-column: 5 / span 2;
+}
+
+.col-5x3 {
+  grid-column: 5 / span 3;
+}
+
+.col-5x4 {
+  grid-column: 5 / span 4;
+}
+
+.col-5x5 {
+  grid-column: 5 / span 5;
+}
+
+.col-5x6 {
+  grid-column: 5 / span 6;
+}
+
+.col-5x7 {
+  grid-column: 5 / span 7;
+}
+
+.col-5x8 {
+  grid-column: 5 / span 8;
+}
+
+.col-6 {
+  grid-column: 6;
+}
+
+.col-6x2 {
+  grid-column: 6 / span 2;
+}
+
+.col-6x3 {
+  grid-column: 6 / span 3;
+}
+
+.col-6x4 {
+  grid-column: 6 / span 4;
+}
+
+.col-6x5 {
+  grid-column: 6 / span 5;
+}
+
+.col-6x6 {
+  grid-column: 6 / span 6;
+}
+
+.col-6x7 {
+  grid-column: 6 / span 7;
+}
+
+.col-7 {
+  grid-column: 7;
+}
+
+.col-7x2 {
+  grid-column: 7 / span 2;
+}
+
+.col-7x3 {
+  grid-column: 7 / span 3;
+}
+
+.col-7x4 {
+  grid-column: 7 / span 4;
+}
+
+.col-7x5 {
+  grid-column: 7 / span 5;
+}
+
+.col-7x6 {
+  grid-column: 7 / span 6;
+}
+
+.col-8 {
+  grid-column: 8;
+}
+
+.col-8x2 {
+  grid-column: 8 / span 2;
+}
+
+.col-8x3 {
+  grid-column: 8 / span 3;
+}
+
+.col-8x4 {
+  grid-column: 8 / span 4;
+}
+
+.col-8x5 {
+  grid-column: 8 / span 5;
+}
+
+.col-9 {
+  grid-column: 9;
+}
+
+.col-9x2 {
+  grid-column: 9 / span 2;
+}
+
+.col-9x3 {
+  grid-column: 9 / span 3;
+}
+
+.col-9x4 {
+  grid-column: 9 / span 4;
+}
+
+.col-10 {
+  grid-column: 10;
+}
+
+.col-10x2 {
+  grid-column: 10 / span 2;
+}
+
+.col-10x3 {
+  grid-column: 10 / span 3;
+}
+
+.col-11 {
+  grid-column: 11;
+}
+
+.col-11x2 {
+  grid-column: 11 / span 2;
+}
+
+.col-12 {
+  grid-column: 12;
+}
+
+/*# sourceMappingURL=jma-calculadora.css.map */
