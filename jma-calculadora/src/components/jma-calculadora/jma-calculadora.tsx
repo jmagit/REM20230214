@@ -51,9 +51,9 @@ export class JmaCalculadora {
     this.limpiar = true;
   }
 
-  @State() acumulado = 0;
-  @State() operador = '+';
-  @State() limpiar = true;
+  acumulado = 0;
+  operador = '+';
+  limpiar = true;
   @State() pantalla = '0'
   @State() resumen = '';
 
@@ -153,7 +153,7 @@ export class JmaCalculadora {
     // Number: double-precision IEEE 754 floating point.
     // 9.9 + 1.3, 0.1 + 0.2, 1.0 - 0.9
     this.pantalla = parseFloat(this.acumulado.toPrecision(15)).toString();
-    // this.miPantalla = this.acumulado.toString();
+    // this.pantalla = this.acumulado.toString();
     this.operador = value;
     this.limpiar = true;
     this.raiseUpdated(+this.pantalla);
@@ -180,7 +180,7 @@ export class JmaCalculadora {
     return (
       <Host class="Calculadora">
         <div class="Calculadora">
-          <Resumen resumen={this.resumen} />
+          <Resumen resumen={this.resumen} coma={this.comaDecimal} />
           <Pantalla pantalla={this.pantalla} coma={this.comaDecimal} />
           <input class="btnOperar" type="button" value="C" onClick={this.inicia.bind(this, 0)} />
           <input class="btnOperar col-2x2" type="button" value="&lt;&lt;&lt; BORRAR" onClick={this.borrar.bind(this)} />
