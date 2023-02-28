@@ -21,7 +21,7 @@
   margin: 4px;
   max-width: 100%;
   min-width: 150px;
-  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 768px) {
   .Calculadora {
@@ -93,7 +93,7 @@
 .Calculadora .btnDigito {
   color: var(--digito-color);
   width: 100%;
-  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 576px) {
   .Calculadora .btnDigito {
@@ -118,7 +118,7 @@
 .Calculadora .btnOperar {
   color: var(--operador-color);
   width: 100%;
-  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 576px) {
   .Calculadora .btnOperar {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, h, Prop, State, Event, Method, Host, Listen, Build } from '@stencil/core';
+import { Component, EventEmitter, h, Prop, State, Event, Method, Host, Listen, Build, Watch } from '@stencil/core';
 
 const Pantalla = props => (
   <output class="Pantalla">
@@ -22,7 +22,7 @@ export class JmaCalculadora {
   /**
    * Permite establecer el valor inicial
    */
-  @Prop() value: number;
+  @Prop({mutable: true}) value: number;
   /**
       * Permite establecer la coma como separador decimal
      */
@@ -43,19 +43,15 @@ export class JmaCalculadora {
    * @returns Promesa resuelta
    */
   @Method()
-  async inicia(valor = 0): Promise<void> {
-    this.acumulado = 0;
-    this.operador = '+';
-    this.pantalla = valor.toString();
-    this.resumen = '';
-    this.limpiar = true;
+  async init(valor = 0): Promise<void> {
+    this.inicia(valor);
   }
 
+  @State() pantalla = '0'
+  @State() resumen = '';
   acumulado = 0;
   operador = '+';
   limpiar = true;
-  @State() pantalla = '0'
-  @State() resumen = '';
 
   componentWillLoad() {
     if (this.value) {
@@ -66,15 +62,26 @@ export class JmaCalculadora {
   // @Watch('value')
   // actualizaPantalla(newValue: string, oldValue: string) {
   //   if (newValue !== oldValue) {
+  //     const limpiar = this.limpiar
   //     this.ponOperando(newValue);
+  //     this.limpiar = limpiar
   //   }
   // }
 
   protected raiseUpdated(value: number) {
+    // if(this.value !== value) this.value = value;
     this.updated.emit(value);
   }
   protected raiseEqualed(value: number) {
     this.equaled.emit(value);
+  }
+
+  inicia(valor = 0) {
+    this.acumulado = 0;
+    this.operador = '+';
+    this.pantalla = valor.toString();
+    this.resumen = '';
+    this.limpiar = true;
   }
 
   ponDigito(value: number | string): void {
@@ -182,21 +189,21 @@ export class JmaCalculadora {
         <div class="Calculadora">
           <Resumen resumen={this.resumen} coma={this.comaDecimal} />
           <Pantalla pantalla={this.pantalla} coma={this.comaDecimal} />
-          <input class="btnOperar" type="button" value="C" onClick={this.inicia.bind(this, 0)} />
-          <input class="btnOperar col-2x2" type="button" value="&lt;&lt;&lt; BORRAR" onClick={this.borrar.bind(this)} />
-          <input class="btnOperar" type="button" value="+" onClick={this.calcula.bind(this, '+')} />
+          <input class="btnOperar col-1x2" type="button" value="C" onClick={this.inicia.bind(this, 0)} />
+          <input class="btnOperar" type="button" value="&#9003;" onClick={this.borrar.bind(this)} />
+          <input class="btnOperar" type="button" value="/" onClick={this.calcula.bind(this, '/')} />
           <input class="btnDigito" type="button" value="7" onClick={this.ponDigito.bind(this, '7')} />
           <input class="btnDigito" type="button" value="8" onClick={this.ponDigito.bind(this, '8')} />
           <input class="btnDigito" type="button" value="9" onClick={this.ponDigito.bind(this, '9')} />
-          <input class="btnOperar" type="button" value="-" onClick={this.calcula.bind(this, '-')} />
+          <input class="btnOperar" type="button" value="*" onClick={this.calcula.bind(this, '*')} />
           <input class="btnDigito" type="button" value="4" onClick={this.ponDigito.bind(this, '4')} />
           <input class="btnDigito" type="button" value="5" onClick={this.ponDigito.bind(this, '5')} />
           <input class="btnDigito" type="button" value="6" onClick={this.ponDigito.bind(this, '6')} />
-          <input class="btnOperar" type="button" value="*" onClick={this.calcula.bind(this, '*')} />
+          <input class="btnOperar" type="button" value="-" onClick={this.calcula.bind(this, '-')} />
           <input class="btnDigito" type="button" value="1" onClick={this.ponDigito.bind(this, '1')} />
           <input class="btnDigito" type="button" value="2" onClick={this.ponDigito.bind(this, '2')} />
           <input class="btnDigito" type="button" value="3" onClick={this.ponDigito.bind(this, '3')} />
-          <input class="btnOperar" type="button" value="/" onClick={this.calcula.bind(this, '/')} />
+          <input class="btnOperar" type="button" value="+" onClick={this.calcula.bind(this, '+')} />
           <input class="btnDigito" type="button" value="±" onClick={this.cambiaSigno.bind(this)} />
           <input class="btnDigito" type="button" value="0" onClick={this.ponDigito.bind(this, '0')} />
           <input class="btnDigito" type="button" value={this.comaDecimal ? ',' : '.'} onClick={this.ponComa.bind(this)} />
@@ -206,4 +213,3 @@ export class JmaCalculadora {
     );
   }
 }
-
