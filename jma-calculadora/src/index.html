@@ -21,6 +21,7 @@
     <output id="pantalla"></output>
     <button type="button" id="btnInit">Init</button>
   </div>
+  <pantalla pantalla="dddddddddddddddddddddddd"></pantalla>
   <jma-calculadora id="calc1" value="666" coma-decimal></jma-calculadora>
   <script>
     (async () => {
@@ -30,7 +31,7 @@
         document.querySelector('#pantalla').textContent = event.detail
       })
       document.querySelector('#btnInit').addEventListener('click', async event => {
-        await calc.inicia();
+        // await calc.inicia();
         calc.value = 5
         console.log(calc.value)
       })

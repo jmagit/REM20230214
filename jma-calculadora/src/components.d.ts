@@ -16,7 +16,7 @@ export namespace Components {
           * @param valor Valor inicial en pantalla, 0 por defecto
           * @returns Promesa resuelta
          */
-        "inicia": (valor?: number) => Promise<void>;
+        "init": (valor?: number) => Promise<void>;
         /**
           * Permite establecer el valor inicial
          */
