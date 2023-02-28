@@ -6,9 +6,9 @@ const Pantalla = props => (
   </output>
 );
 
-const Resumen = props => (
+const Resumen = ({ coma, resumen }) => (
   <output class="Resumen">
-    {props.coma ? props.resumen.replace(/\./g, ",") : props.resumen}
+    {coma ? resumen.replace(/\./g, ",") : resumen}
   </output>
 );
 
@@ -59,17 +59,17 @@ export class JmaCalculadora {
     }
   }
 
-  // @Watch('value')
-  // actualizaPantalla(newValue: string, oldValue: string) {
-  //   if (newValue !== oldValue) {
-  //     const limpiar = this.limpiar
-  //     this.ponOperando(newValue);
-  //     this.limpiar = limpiar
-  //   }
-  // }
+  @Watch('value')
+  actualizaPantalla(newValue: string, oldValue: string) {
+    if (newValue !== oldValue) {
+      const limpiar = this.limpiar
+      this.ponOperando(newValue);
+      this.limpiar = limpiar
+    }
+  }
 
   protected raiseUpdated(value: number) {
-    // if(this.value !== value) this.value = value;
+    if(this.value !== value) this.value = value;
     this.updated.emit(value);
   }
   protected raiseEqualed(value: number) {

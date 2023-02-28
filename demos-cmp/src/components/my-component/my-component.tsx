@@ -1,4 +1,4 @@
-import { Component, Prop, h, State } from '@stencil/core';
+import { Component, Prop, h, State, Element } from '@stencil/core';
 import { format } from '../../utils/utils';
 
 /**
@@ -58,6 +58,19 @@ export class MyComponent {
     return oldValue === newValue;
   }
 
+  @Element() el: HTMLElement;
+  btn: HTMLButtonElement;
+
+  @State() alto = 0;
+  componentWillRender() {
+    console.log(`componentWillRender: ${this.btn ? 'si' : 'no'}`)
+  }
+  componentDidRender() {
+    this.alto = this.el.getBoundingClientRect().height;
+    this.btn.value = `alto: ${this.alto}`
+    this.btn.focus()
+    console.log(`componentDidRender: ${this.btn ? 'si' : 'no'}`)
+  }
   render() {
     let nombre = <b>Mundo</b>
     // let cad = <p>Esto es un párrafo</p>
@@ -106,7 +119,10 @@ export class MyComponent {
     //   return <h1>Esperando</h1>
     return (
       <div>
-        <my-demo initValue={this.contador} delta={3} objeto={obj1}  />
+        Dimension: {this.alto}
+        <input type='button' value='algo' ref={tag => this.btn = tag as HTMLButtonElement} />
+        <input type='button' value={`alto: ${this.alto}`} />
+        {this.contador % 10 === 0 && <my-demo initValue={this.contador} delta={3} objeto={obj1}  />}
         <ul>
             {this.numeros.map((item, index) =>
               <li key={item.toString()}>
@@ -114,6 +130,7 @@ export class MyComponent {
               </li>)
             }
           </ul>
+
         <img id="logo" src={logoURL} title="Logo" {...tamaño} />
         <div class={{ errores: this.errorColor }}>
           Hola {nombre ?? <b>desconocido</b>}! I'm {this.getText()}
