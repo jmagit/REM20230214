@@ -1,6 +1,5 @@
 import { Component, Host, h, Prop, EventEmitter, State, Event, Watch, Listen, Method } from '@stencil/core';
-
-const MyPantalla = props => <output part="pantalla" class="la-pantalla">{props.display}</output>
+import { MyPantalla } from '../../utils/funciones_componente'
 
 /**
  * Demo de componente contador
@@ -97,7 +96,7 @@ export class MyContador {
       <Host class={{ 'positivo': this.counter >= 0, 'negativo': this.counter < 0, 'center': true }} >
         <div class={{ 'positivo': this.counter >= 0, 'negativo': this.counter < 0, 'center': true }}>
           <MyPantalla display={this.counter} />
-          <div class="buttons">
+          <div part="botonera" class="buttons">
             <button type="button" class="button-left" onClick={() => this.baja()}>-</button>
             <button type="button" class="button-right" onClick={() => this.sube()}>+</button>
             <button type="button" class="button-right" onClick={this.sube}>++</button>

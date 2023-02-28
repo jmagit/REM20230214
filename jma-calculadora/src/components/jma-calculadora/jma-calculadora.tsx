@@ -14,7 +14,7 @@ const Resumen = ({ coma, resumen }) => (
 
 @Component({
   tag: 'jma-calculadora',
-  styleUrl: 'jma-calculadora.css',
+  styleUrl: 'jma-calculadora.scss',
   shadow: true,
 })
 export class JmaCalculadora {

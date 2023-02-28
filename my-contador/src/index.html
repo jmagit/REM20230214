@@ -8,11 +8,12 @@
     <script type="module" src="/build/my-contador.esm.js"></script>
     <script nomodule src="/build/my-contador.js"></script>
     <style>
-      my-contador::part(pantalla) {
-        font-size: 2em;
+      my-contador.personalizado::part(pantalla) {
+        font-size: 5em;
+        color: red;
       }
       .center {
-        max-width: 100px;
+        max-width: 200px;
       }
       button {
         /* font-size: 2em; */
@@ -23,7 +24,7 @@
     </style>
   </head>
   <body>
-    <my-contador delta="3" init="10" ><i>contenido de la etiqueta</i></my-contador>
+    <my-contador class="personalizado" style="width: 200px;" delta="3" init="10" ><i>contenido de la etiqueta</i></my-contador>
 
     <fieldset>
       <legend>Externo</legend>
