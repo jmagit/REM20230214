@@ -24,6 +24,17 @@ export class MyDemo {
   @Prop() objeto: any;
   @State() counter = 0;
 
+  intervalo: any;
+  // connectedCallback() {
+  //   let count = 0;
+  //   this.intervalo = setInterval(() => {
+  //     console.log(`Contador interno: ${++count}`)
+  //   }, 100)
+  // }
+  disconnectedCallback() {
+    clearInterval(this.intervalo)
+    console.log(`Desmontado`)
+  }
   render() {
     return (
       <Host>

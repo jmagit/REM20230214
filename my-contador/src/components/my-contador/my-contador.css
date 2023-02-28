@@ -14,3 +14,7 @@
 .negativo {
   background-color: var(--negativo-back-color);
 }
+
+button {
+  color: red !important;
+}
