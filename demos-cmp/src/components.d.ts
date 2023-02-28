@@ -6,6 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface MyAjaxWait {
+        "hidden": boolean;
+    }
     interface MyCard {
         /**
           * cccc
@@ -47,6 +50,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLMyAjaxWaitElement extends Components.MyAjaxWait, HTMLStencilElement {
+    }
+    var HTMLMyAjaxWaitElement: {
+        prototype: HTMLMyAjaxWaitElement;
+        new (): HTMLMyAjaxWaitElement;
+    };
     interface HTMLMyCardElement extends Components.MyCard, HTMLStencilElement {
     }
     var HTMLMyCardElement: {
@@ -69,12 +78,16 @@ declare global {
         new (): HTMLMyDemoElement;
     };
     interface HTMLElementTagNameMap {
+        "my-ajax-wait": HTMLMyAjaxWaitElement;
         "my-card": HTMLMyCardElement;
         "my-component": HTMLMyComponentElement;
         "my-demo": HTMLMyDemoElement;
     }
 }
 declare namespace LocalJSX {
+    interface MyAjaxWait {
+        "hidden"?: boolean;
+    }
     interface MyCard {
         /**
           * cccc
@@ -115,6 +128,7 @@ declare namespace LocalJSX {
         "visible"?: boolean;
     }
     interface IntrinsicElements {
+        "my-ajax-wait": MyAjaxWait;
         "my-card": MyCard;
         "my-component": MyComponent;
         "my-demo": MyDemo;
@@ -124,6 +138,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "my-ajax-wait": LocalJSX.MyAjaxWait & JSXBase.HTMLAttributes<HTMLMyAjaxWaitElement>;
             "my-card": LocalJSX.MyCard & JSXBase.HTMLAttributes<HTMLMyCardElement>;
             /**
              * Ejemplo de componente en Stencil

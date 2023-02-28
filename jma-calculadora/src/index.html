@@ -10,15 +10,16 @@
   <script nomodule src="/build/jma-calculadora.js"></script>
 </head>
 <style>
-  /* jma-calculadora {
+  jma-calculadora {
     --calculadora-background-color: #9afa6a;
-  } */
+  }
 </style>
 
 <body>
   <div>
     Pantalla:
     <output id="pantalla"></output>
+    <input type="color" id="bgColor" value="#9afa6a" >
     <button type="button" id="btnInit">Init</button>
   </div>
   <pantalla pantalla="dddddddddddddddddddddddd"></pantalla>
@@ -35,6 +36,10 @@
         calc.value = 5
         console.log(calc.value)
       })
+      document.querySelector('#bgColor').addEventListener('input', async event => {
+        calc.style.setProperty("--calculadora-background-color", event.target.value)
+      })
+
     })()
   </script>
   <style>
@@ -101,7 +106,7 @@
         })
         document.querySelector('#btnCalc').addEventListener('click', async event => {
           if (calc.hidden) {
-            await calc.inicia(+document.querySelector('#txtImporte').value);
+            await calc.init(+document.querySelector('#txtImporte').value);
           }
           calc.hidden = !calc.hidden;
         })
