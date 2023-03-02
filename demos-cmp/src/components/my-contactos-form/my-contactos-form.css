@@ -1,0 +1,18 @@
+:host {
+  display: block;
+}
+
+.error {
+  color: red;
+}
+
+form :invalid {
+  background-color: rgb(255, 202, 202);
+  border: 2px solid rgb(87, 0, 0);
+  border-radius: 5px;
+}
+input:placeholder-shown {
+  background-color: ivory;
+  border: 2px solid darkorange;
+  border-radius: 5px;
+}
