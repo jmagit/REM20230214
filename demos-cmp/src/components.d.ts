@@ -38,6 +38,20 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface MyContactos {
+    }
+    interface MyContactosForm {
+        "elemento": {};
+        "isAdd": boolean;
+    }
+    interface MyContactosList {
+        "listado": any[];
+        "pagina": number;
+        "paginas": number;
+    }
+    interface MyContactosView {
+        "elemento": {};
+    }
     /**
      * Demo de componente contador
      */
@@ -78,6 +92,18 @@ export interface MyAlertCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMyAlertElement;
 }
+export interface MyContactosFormCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyContactosFormElement;
+}
+export interface MyContactosListCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyContactosListElement;
+}
+export interface MyContactosViewCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyContactosViewElement;
+}
 export interface MyContadorCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMyContadorElement;
@@ -110,6 +136,30 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyContactosElement extends Components.MyContactos, HTMLStencilElement {
+    }
+    var HTMLMyContactosElement: {
+        prototype: HTMLMyContactosElement;
+        new (): HTMLMyContactosElement;
+    };
+    interface HTMLMyContactosFormElement extends Components.MyContactosForm, HTMLStencilElement {
+    }
+    var HTMLMyContactosFormElement: {
+        prototype: HTMLMyContactosFormElement;
+        new (): HTMLMyContactosFormElement;
+    };
+    interface HTMLMyContactosListElement extends Components.MyContactosList, HTMLStencilElement {
+    }
+    var HTMLMyContactosListElement: {
+        prototype: HTMLMyContactosListElement;
+        new (): HTMLMyContactosListElement;
+    };
+    interface HTMLMyContactosViewElement extends Components.MyContactosView, HTMLStencilElement {
+    }
+    var HTMLMyContactosViewElement: {
+        prototype: HTMLMyContactosViewElement;
+        new (): HTMLMyContactosViewElement;
+    };
     /**
      * Demo de componente contador
      */
@@ -136,6 +186,10 @@ declare global {
         "my-alert": HTMLMyAlertElement;
         "my-card": HTMLMyCardElement;
         "my-component": HTMLMyComponentElement;
+        "my-contactos": HTMLMyContactosElement;
+        "my-contactos-form": HTMLMyContactosFormElement;
+        "my-contactos-list": HTMLMyContactosListElement;
+        "my-contactos-view": HTMLMyContactosViewElement;
         "my-contador": HTMLMyContadorElement;
         "my-demo": HTMLMyDemoElement;
         "my-notifications": HTMLMyNotificationsElement;
@@ -172,6 +226,28 @@ declare namespace LocalJSX {
           * The middle name
          */
         "middle"?: string;
+    }
+    interface MyContactos {
+    }
+    interface MyContactosForm {
+        "elemento"?: {};
+        "isAdd"?: boolean;
+        "onCancel"?: (event: MyContactosFormCustomEvent<null>) => void;
+        "onSend"?: (event: MyContactosFormCustomEvent<Object>) => void;
+    }
+    interface MyContactosList {
+        "listado"?: any[];
+        "onAdd"?: (event: MyContactosListCustomEvent<null>) => void;
+        "onChangePage"?: (event: MyContactosListCustomEvent<number>) => void;
+        "onDelete"?: (event: MyContactosListCustomEvent<number>) => void;
+        "onEdit"?: (event: MyContactosListCustomEvent<number>) => void;
+        "onView"?: (event: MyContactosListCustomEvent<number>) => void;
+        "pagina"?: number;
+        "paginas"?: number;
+    }
+    interface MyContactosView {
+        "elemento"?: {};
+        "onCancel"?: (event: MyContactosViewCustomEvent<null>) => void;
     }
     /**
      * Demo de componente contador
@@ -213,6 +289,10 @@ declare namespace LocalJSX {
         "my-alert": MyAlert;
         "my-card": MyCard;
         "my-component": MyComponent;
+        "my-contactos": MyContactos;
+        "my-contactos-form": MyContactosForm;
+        "my-contactos-list": MyContactosList;
+        "my-contactos-view": MyContactosView;
         "my-contador": MyContador;
         "my-demo": MyDemo;
         "my-notifications": MyNotifications;
@@ -229,6 +309,10 @@ declare module "@stencil/core" {
              * Ejemplo de componente en Stencil
              */
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-contactos": LocalJSX.MyContactos & JSXBase.HTMLAttributes<HTMLMyContactosElement>;
+            "my-contactos-form": LocalJSX.MyContactosForm & JSXBase.HTMLAttributes<HTMLMyContactosFormElement>;
+            "my-contactos-list": LocalJSX.MyContactosList & JSXBase.HTMLAttributes<HTMLMyContactosListElement>;
+            "my-contactos-view": LocalJSX.MyContactosView & JSXBase.HTMLAttributes<HTMLMyContactosViewElement>;
             /**
              * Demo de componente contador
              */
