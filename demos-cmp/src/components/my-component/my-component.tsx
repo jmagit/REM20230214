@@ -1,5 +1,7 @@
 import { Component, Prop, h, State, Element } from '@stencil/core';
 import { format } from '../../utils/utils';
+import { store, unsubscribe } from '../../utils/contador'
+import notify, {NotificationType} from '../../utils/notification-service';
 
 /**
  * Ejemplo de componente en Stencil
@@ -30,14 +32,14 @@ export class MyComponent {
   @State() contador = 0;
   @State() numeros: Array<Number> = [];
 
-  constructor() {
-    let intervalo = setInterval(() => {
-      this.contador++
-      this.numeros = [this.contador, ...this.numeros ]
-      console.log(`Contador: ${this.contador}`)
-    }, 1000)
-    setTimeout(() => clearInterval(intervalo), 60000)
-  }
+  // constructor() {
+  //   let intervalo = setInterval(() => {
+  //     this.contador++
+  //     this.numeros = [this.contador, ...this.numeros ]
+  //     console.log(`Contador: ${this.contador}`)
+  //   }, 1000)
+  //   setTimeout(() => clearInterval(intervalo), 60000)
+  // }
 
   /**
    * Concatena dos valores numéricos
@@ -119,6 +121,14 @@ export class MyComponent {
     //   return <h1>Esperando</h1>
     return (
       <div>
+       <input type='button' value="warn" onClick={e => notify.add('Aviso warn', NotificationType.warn) } />
+       <input type='button' value="info" onClick={e => notify.add('Aviso info', NotificationType.info) } />
+       <input type='button' value="error" onClick={e => notify.add('Aviso ') } />
+         {store.state.counter}
+        <input type='button' value='Reset' onClick={() => store.reset()} />
+        <input type='button' value='Add' onClick={() => store.state.counter++} />
+         <input type='button' value='unsubscribe' onClick={() => unsubscribe()} />
+       <my-contador init={98} />
         Dimension: {this.alto}
         <input type='button' value='algo' ref={tag => this.btn = tag as HTMLButtonElement} />
         <input type='button' value={`alto: ${this.alto}`} />

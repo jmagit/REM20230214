@@ -5,9 +5,15 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { NotificationType } from "./utils/notification-service";
+export { NotificationType } from "./utils/notification-service";
 export namespace Components {
     interface MyAjaxWait {
         "hidden": boolean;
+    }
+    interface MyAlert {
+        "message": string;
+        "type": NotificationType;
     }
     interface MyCard {
         /**
@@ -32,6 +38,23 @@ export namespace Components {
          */
         "middle": string;
     }
+    /**
+     * Demo de componente contador
+     */
+    interface MyContador {
+        /**
+          * Valor a incrementar/decrementar del contador
+         */
+        "delta": number;
+        /**
+          * Valor inicial del contador
+         */
+        "init": number;
+        /**
+          * Reinicia el contador
+         */
+        "reset": () => Promise<void>;
+    }
     interface MyDemo {
         /**
           * Valor a incrementar/decrementar del contador
@@ -48,6 +71,16 @@ export namespace Components {
         "objeto": any;
         "visible": boolean;
     }
+    interface MyNotifications {
+    }
+}
+export interface MyAlertCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyAlertElement;
+}
+export interface MyContadorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMyContadorElement;
 }
 declare global {
     interface HTMLMyAjaxWaitElement extends Components.MyAjaxWait, HTMLStencilElement {
@@ -55,6 +88,12 @@ declare global {
     var HTMLMyAjaxWaitElement: {
         prototype: HTMLMyAjaxWaitElement;
         new (): HTMLMyAjaxWaitElement;
+    };
+    interface HTMLMyAlertElement extends Components.MyAlert, HTMLStencilElement {
+    }
+    var HTMLMyAlertElement: {
+        prototype: HTMLMyAlertElement;
+        new (): HTMLMyAlertElement;
     };
     interface HTMLMyCardElement extends Components.MyCard, HTMLStencilElement {
     }
@@ -71,22 +110,45 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    /**
+     * Demo de componente contador
+     */
+    interface HTMLMyContadorElement extends Components.MyContador, HTMLStencilElement {
+    }
+    var HTMLMyContadorElement: {
+        prototype: HTMLMyContadorElement;
+        new (): HTMLMyContadorElement;
+    };
     interface HTMLMyDemoElement extends Components.MyDemo, HTMLStencilElement {
     }
     var HTMLMyDemoElement: {
         prototype: HTMLMyDemoElement;
         new (): HTMLMyDemoElement;
     };
+    interface HTMLMyNotificationsElement extends Components.MyNotifications, HTMLStencilElement {
+    }
+    var HTMLMyNotificationsElement: {
+        prototype: HTMLMyNotificationsElement;
+        new (): HTMLMyNotificationsElement;
+    };
     interface HTMLElementTagNameMap {
         "my-ajax-wait": HTMLMyAjaxWaitElement;
+        "my-alert": HTMLMyAlertElement;
         "my-card": HTMLMyCardElement;
         "my-component": HTMLMyComponentElement;
+        "my-contador": HTMLMyContadorElement;
         "my-demo": HTMLMyDemoElement;
+        "my-notifications": HTMLMyNotificationsElement;
     }
 }
 declare namespace LocalJSX {
     interface MyAjaxWait {
         "hidden"?: boolean;
+    }
+    interface MyAlert {
+        "message": string;
+        "onClear"?: (event: MyAlertCustomEvent<null>) => void;
+        "type"?: NotificationType;
     }
     interface MyCard {
         /**
@@ -111,6 +173,23 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    /**
+     * Demo de componente contador
+     */
+    interface MyContador {
+        /**
+          * Valor a incrementar/decrementar del contador
+         */
+        "delta"?: number;
+        /**
+          * Valor inicial del contador
+         */
+        "init"?: number;
+        /**
+          * Notifica los cambios en el contador
+         */
+        "onUpdated"?: (event: MyContadorCustomEvent<number>) => void;
+    }
     interface MyDemo {
         /**
           * Valor a incrementar/decrementar del contador
@@ -127,11 +206,16 @@ declare namespace LocalJSX {
         "objeto"?: any;
         "visible"?: boolean;
     }
+    interface MyNotifications {
+    }
     interface IntrinsicElements {
         "my-ajax-wait": MyAjaxWait;
+        "my-alert": MyAlert;
         "my-card": MyCard;
         "my-component": MyComponent;
+        "my-contador": MyContador;
         "my-demo": MyDemo;
+        "my-notifications": MyNotifications;
     }
 }
 export { LocalJSX as JSX };
@@ -139,12 +223,18 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-ajax-wait": LocalJSX.MyAjaxWait & JSXBase.HTMLAttributes<HTMLMyAjaxWaitElement>;
+            "my-alert": LocalJSX.MyAlert & JSXBase.HTMLAttributes<HTMLMyAlertElement>;
             "my-card": LocalJSX.MyCard & JSXBase.HTMLAttributes<HTMLMyCardElement>;
             /**
              * Ejemplo de componente en Stencil
              */
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            /**
+             * Demo de componente contador
+             */
+            "my-contador": LocalJSX.MyContador & JSXBase.HTMLAttributes<HTMLMyContadorElement>;
             "my-demo": LocalJSX.MyDemo & JSXBase.HTMLAttributes<HTMLMyDemoElement>;
+            "my-notifications": LocalJSX.MyNotifications & JSXBase.HTMLAttributes<HTMLMyNotificationsElement>;
         }
     }
 }
