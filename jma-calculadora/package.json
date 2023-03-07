@@ -10,7 +10,12 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/jma-calculadora/jma-calculadora.esm.js",
-  "keywords": ["curso", "demos", "stencil", "web component"],
+  "keywords": [
+    "curso",
+    "demos",
+    "stencil",
+    "web component"
+  ],
   "homepage": "https://github.com/jmagit/REM20230214",
   "repository": {
     "type": "git",
@@ -31,6 +36,7 @@
     "@stencil/core": "^3.0.0"
   },
   "devDependencies": {
+    "@stencil/angular-output-target": "^0.5.0",
     "@stencil/sass": "^2.0.4",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.11",

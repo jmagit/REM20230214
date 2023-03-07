@@ -326,7 +326,9 @@
 </div>
 
 <div class="content" role="main">
-
+  <jma-calculadora [value]="valor"  (updated)="pon($event)" coma-decimal></jma-calculadora>
+  <jma-kk></jma-kk>
+  {{valor}}
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
 
