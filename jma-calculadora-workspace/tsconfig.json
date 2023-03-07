@@ -6,8 +6,13 @@
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "noImplicitOverride": false,
+    "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "jma-calculadora-angular": [
+        "dist/jma-calculadora-angular"
+      ]
+    },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -24,7 +29,7 @@
       "dom"
     ],
     "paths": {
-      "jma-calculadora/*": ["./src/lib/jma-calculadora/*"]
+      "jma-calculadora/*": ["../jma-calculadora/dist/*"]
     }
   },
   "angularCompilerOptions": {
