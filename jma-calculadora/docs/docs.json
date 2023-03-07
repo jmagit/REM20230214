@@ -1,0 +1,109 @@
+{
+  "timestamp": "2023-03-07T16:11:43",
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "3.0.1",
+    "typescriptVersion": "4.9.5"
+  },
+  "components": [
+    {
+      "filePath": "./src/components/jma-calculadora/jma-calculadora.tsx",
+      "encapsulation": "shadow",
+      "tag": "jma-calculadora",
+      "readme": "# jma-calculadora\n\n\n",
+      "docs": "",
+      "docsTags": [],
+      "usage": {},
+      "props": [
+        {
+          "name": "comaDecimal",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "coma-decimal",
+          "reflectToAttr": false,
+          "docs": "Permite establecer la coma como separador decimal",
+          "docsTags": [],
+          "default": "false",
+          "values": [
+            {
+              "type": "boolean"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "mutable": true,
+          "attr": "value",
+          "reflectToAttr": false,
+          "docs": "Permite establecer el valor inicial",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "number"
+            }
+          ],
+          "optional": false,
+          "required": false
+        }
+      ],
+      "methods": [
+        {
+          "name": "init",
+          "returns": {
+            "type": "Promise<void>",
+            "docs": "Promesa resuelta"
+          },
+          "signature": "init(valor?: number) => Promise<void>",
+          "parameters": [],
+          "docs": "Restaura la calculadora a su valor inicial",
+          "docsTags": [
+            {
+              "name": "param",
+              "text": "valor Valor inicial en pantalla, 0 por defecto"
+            },
+            {
+              "name": "returns",
+              "text": "Promesa resuelta"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "event": "equaled",
+          "detail": "number",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "El evento \"equaled\" se dispara cuando se pulsa el = y se obtiene el resultado total",
+          "docsTags": []
+        },
+        {
+          "event": "updated",
+          "detail": "number",
+          "bubbles": true,
+          "cancelable": true,
+          "composed": true,
+          "docs": "El evento \"updated\" se dispara cuando se calcula un nuevo resultado",
+          "docsTags": []
+        }
+      ],
+      "listeners": [
+        {
+          "event": "keydown",
+          "capture": false,
+          "passive": false
+        }
+      ],
+      "styles": [],
+      "slots": [],
+      "parts": [],
+      "dependents": [],
+      "dependencies": [],
+      "dependencyGraph": {}
+    }
+  ]
+}

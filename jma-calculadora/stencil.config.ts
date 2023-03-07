@@ -18,6 +18,8 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null, // disable service workers
     },
+    { type: 'docs-json', file: 'docs/docs.json', },
+    { type: 'docs-vscode', file: 'vscode-data.json', },
   ],
   plugins: [
     sass()
