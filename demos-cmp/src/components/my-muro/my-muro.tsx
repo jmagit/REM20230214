@@ -42,17 +42,14 @@ export class MyMuro {
       .finally(() => this.loading = false);
   }
 
-  @State() repintar = true;
   ver(index: number) {
     this.listado[index].visible = true
     this.listado = [...this.listado]
-    this.repintar = !this.repintar
   }
   render() {
     if (this.loading) return <my-ajax-wait />;
     return (
       <Host>
-        {this.repintar}
         {this.errorMsg && <my-alert message={this.errorMsg} onClear={() => this.errorMsg = ''} />}
         <div>
           {Array(this.paginas).fill(0, 0, this.paginas).map((_, index) =>
