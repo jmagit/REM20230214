@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cliente-angular-sch';
+  valor = 666;
+
+  pon(ev: any) {
+    this.valor = ev.detail;
+  }
 }

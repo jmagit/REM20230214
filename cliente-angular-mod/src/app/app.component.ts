@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cliente-angular-mod';
+  value = 555;
+  pon(ev: any) {
+    this.value = ev.detail;
+  }
 }
