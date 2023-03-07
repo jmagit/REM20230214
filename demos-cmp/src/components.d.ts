@@ -85,6 +85,8 @@ export namespace Components {
         "objeto": any;
         "visible": boolean;
     }
+    interface MyMuro {
+    }
     interface MyNotifications {
     }
 }
@@ -175,6 +177,12 @@ declare global {
         prototype: HTMLMyDemoElement;
         new (): HTMLMyDemoElement;
     };
+    interface HTMLMyMuroElement extends Components.MyMuro, HTMLStencilElement {
+    }
+    var HTMLMyMuroElement: {
+        prototype: HTMLMyMuroElement;
+        new (): HTMLMyMuroElement;
+    };
     interface HTMLMyNotificationsElement extends Components.MyNotifications, HTMLStencilElement {
     }
     var HTMLMyNotificationsElement: {
@@ -192,6 +200,7 @@ declare global {
         "my-contactos-view": HTMLMyContactosViewElement;
         "my-contador": HTMLMyContadorElement;
         "my-demo": HTMLMyDemoElement;
+        "my-muro": HTMLMyMuroElement;
         "my-notifications": HTMLMyNotificationsElement;
     }
 }
@@ -282,6 +291,8 @@ declare namespace LocalJSX {
         "objeto"?: any;
         "visible"?: boolean;
     }
+    interface MyMuro {
+    }
     interface MyNotifications {
     }
     interface IntrinsicElements {
@@ -295,6 +306,7 @@ declare namespace LocalJSX {
         "my-contactos-view": MyContactosView;
         "my-contador": MyContador;
         "my-demo": MyDemo;
+        "my-muro": MyMuro;
         "my-notifications": MyNotifications;
     }
 }
@@ -318,6 +330,7 @@ declare module "@stencil/core" {
              */
             "my-contador": LocalJSX.MyContador & JSXBase.HTMLAttributes<HTMLMyContadorElement>;
             "my-demo": LocalJSX.MyDemo & JSXBase.HTMLAttributes<HTMLMyDemoElement>;
+            "my-muro": LocalJSX.MyMuro & JSXBase.HTMLAttributes<HTMLMyMuroElement>;
             "my-notifications": LocalJSX.MyNotifications & JSXBase.HTMLAttributes<HTMLMyNotificationsElement>;
         }
     }
