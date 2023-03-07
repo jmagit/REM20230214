@@ -23,7 +23,7 @@
 
 ## Methods
 
-### `inicia(valor?: number) => Promise<void>`
+### `init(valor?: number) => Promise<void>`
 
 Restaura la calculadora a su valor inicial
 
