@@ -54,6 +54,7 @@ export class JmaCalculadora {
   limpiar = true;
 
   componentWillLoad() {
+    // eslint-disable-next-line @stencil-community/strict-boolean-conditions
     if (this.value) {
       this.ponOperando(this.value)
     }
