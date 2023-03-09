@@ -1,5 +1,5 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { defineCustomElements } from '../../../../../jma-calculadora/loader';
+import { defineCustomElements } from 'jma-calculadora/loader';
 import { DIRECTIVES } from './src';
 import { NumericValueAccessor } from './src/number-value-accessor';
 @NgModule({

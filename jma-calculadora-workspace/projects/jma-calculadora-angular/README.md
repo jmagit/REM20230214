@@ -1,4 +1,4 @@
-# JmaCalculadoraAngular
+# Ejemplo del curso de Stencil: Modulo Angular
 
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 

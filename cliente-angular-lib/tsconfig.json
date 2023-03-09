@@ -8,11 +8,6 @@
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "paths": {
-      "jma-calculadora-angular": [
-        "dist/jma-calculadora-angular"
-      ]
-    },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -27,10 +22,7 @@
     "lib": [
       "ES2022",
       "dom"
-    ],
-    "paths": {
-      "jma-calculadora/*": ["../jma-calculadora/*"]
-    }
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
