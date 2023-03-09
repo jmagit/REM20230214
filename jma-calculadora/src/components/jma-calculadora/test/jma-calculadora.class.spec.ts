@@ -118,6 +118,21 @@ describe('Pruebas aisladas de la calculadora', () => {
       })
     });
 
+	describe('Método: ponOperando', () => {
+		['1234', '98765', '6.66', Number.POSITIVE_INFINITY].forEach(caso => {
+			it(`Operando validos ${caso}`, () => {
+				calc.ponOperando(caso)
+				expect(calc.pantalla).toBe(caso.toString())
+			})
+		});
+		['$98765', '1234$', ''].forEach(caso => {
+			it(`Operando inválido ${caso}`, () => {
+				calc.ponOperando(caso.toString())
+        expect(spyError).toBeCalledWith('No es un valor numérico.')
+				expect(calc.pantalla).toBe('0')
+			})
+		});
+
     describe('Método: calcula', () => {
       describe('Operadores desconocidos', function () {
         '%&$^a9:'.split('').forEach(operador => {
@@ -204,21 +219,6 @@ describe('Pruebas aisladas de la calculadora', () => {
       });
     });
     });
-
-	describe('Método: ponOperando', () => {
-		['1234', '98765', '6.66', Number.POSITIVE_INFINITY].forEach(caso => {
-			it(`Operando validos ${caso}`, () => {
-				calc.ponOperando(caso)
-				expect(calc.pantalla).toBe(caso.toString())
-			})
-		});
-		['$98765', '1234$', ''].forEach(caso => {
-			it(`Operando inválido ${caso}`, () => {
-				calc.ponOperando(caso.toString())
-        expect(spyError).toBeCalledWith('No es un valor numérico.')
-				expect(calc.pantalla).toBe('0')
-			})
-		});
 	});
 
 })

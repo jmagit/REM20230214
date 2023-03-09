@@ -105,5 +105,21 @@ describe('jma-calculadora', () => {
     expect(pantalla.innerText).toBe('2.5');
     expect(resumen.innerText).toBe('');
   });
+  it('Eventos de teclado', async () => {
+    const page = await newE2EPage();
+    await page.setContent('<jma-calculadora></jma-calculadora>');
+    const calc = await page.find('jma-calculadora');
+    const pantalla = await page.find('jma-calculadora  >>> .Pantalla');
+    expect(pantalla).not.toBeNull();
+
+    await calc.focus()
+    page.waitForChanges()
+    await page.keyboard.type('9876543210');
+    // page.waitForChanges()
+    // expect(pantalla.innerText).toBe('9876543210');
+    await page.keyboard.press('=')
+    page.waitForChanges()
+    // expect(pantalla.innerText).toBe('9876543210');
+  });
 
 });
