@@ -111,15 +111,16 @@ describe('jma-calculadora', () => {
     const calc = await page.find('jma-calculadora');
     const pantalla = await page.find('jma-calculadora  >>> .Pantalla');
     expect(pantalla).not.toBeNull();
-
     await calc.focus()
+    await (await page.find(`jma-calculadora >>> .btnDigito[value="1"]`)).focus()
     page.waitForChanges()
-    await page.keyboard.type('9876543210');
-    // page.waitForChanges()
-    // expect(pantalla.innerText).toBe('9876543210');
+    // await page.keyboard.type('9876543210');
+    await calc.type('9876543210');
+    page.waitForChanges()
+    expect(pantalla.innerText).toBe('9876543210');
     await page.keyboard.press('=')
     page.waitForChanges()
-    // expect(pantalla.innerText).toBe('9876543210');
+    expect(pantalla.innerText).toBe('9876543210');
   });
 
 });
